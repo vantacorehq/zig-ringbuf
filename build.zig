@@ -4,12 +4,12 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const exe = b.addExecutable.(
+    const exe = b.addExecutable.({
         .name = "zig-ringbuf",
         .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
-    );
+    });
     b.installArtifact(exe);
 
     const unit_tests = b.addTest.({
